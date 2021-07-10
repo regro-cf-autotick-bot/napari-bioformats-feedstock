@@ -1,5 +1,5 @@
 {% set name = "napari-bioformats" %}
-{% set version = "0.1.1" %}
+{% set version = "0.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4bb165af407c01238fad7e040760718624ad9eec06a05fdf6ebfab02a2a21e07
+  sha256: 9361bf87158599b2aa57143265f5e48cc9a1901a9fc2897b2c74b8f2462a9e03
 
 build:
   number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
