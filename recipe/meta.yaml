@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 9361bf87158599b2aa57143265f5e48cc9a1901a9fc2897b2c74b8f2462a9e03
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
     - setuptools_scm
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - napari-plugin-engine >=0.1.4
     - numpy
     - pims
@@ -32,6 +32,7 @@ test:
     - napari_bioformats
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
